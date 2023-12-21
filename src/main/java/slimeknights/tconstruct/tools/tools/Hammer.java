@@ -78,6 +78,10 @@ public class Hammer extends Pickaxe {
 
   @Override
   public ImmutableList<BlockPos> getAOEBlocks(ItemStack stack, World world, EntityPlayer player, BlockPos origin) {
+    if (player.isSneaking()) {
+      return ToolHelper.calcAOEBlocks(stack, world, player, origin, 1, 1, 1);
+    }
+
     return ToolHelper.calcAOEBlocks(stack, world, player, origin, 3, 3, 1);
   }
 
